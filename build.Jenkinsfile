@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls'
-				
+				sh 'ls -l'
                 sh 'echo building...'
             }
         }
