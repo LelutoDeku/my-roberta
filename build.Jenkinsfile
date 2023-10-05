@@ -7,10 +7,10 @@ pipeline {
                 // sh 'ls'
                 // sh 'echo building...'
 				sh '''
-				// Load the JSON secrets file
+				# Load the JSON secrets file
                 def secrets = readJSON file: 'secrets.json'
                 
-                // Access specific secrets
+                # Access specific secrets
                 def dockerUsername = secrets.docker-credentials.username
                 def dockerPassword = secrets.docker-credentials.password
 
