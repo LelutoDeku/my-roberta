@@ -10,7 +10,7 @@ pipeline {
 				// Retrieve DockerHub credentials by ID
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
                 
-				// Log in to DockerHub
+				//build image using docker
 				sh '''
 
                 # Use docker login with your credentials
