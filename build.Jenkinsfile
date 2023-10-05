@@ -7,6 +7,8 @@ pipeline {
                 // sh 'ls'
                 // sh 'echo building...'
 				sh '''
+
+				ls -l
 				# Load the JSON secrets file
                 secrets=$(cat secrets.json)
 
