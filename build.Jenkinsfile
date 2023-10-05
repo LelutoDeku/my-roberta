@@ -8,7 +8,7 @@ pipeline {
                 // sh 'echo building...'
 
 				// Retrieve DockerHub credentials by ID
-                withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+                withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
                 
 				//build image using docker
 				sh '''
