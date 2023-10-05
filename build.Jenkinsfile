@@ -8,13 +8,13 @@ pipeline {
                 // sh 'echo building...'
 
 				// Retrieve DockerHub credentials by ID
-                def dockerHubCredentials = credentials('DockerHub')
-                    
-                // Log in to DockerHub
+                withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+                
+				// Log in to DockerHub
 				sh '''
 
                 # Use docker login with your credentials
-                docker login -u ${dockerHubCredentials.username} -p ${dockerHubCredentials.password}
+                docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
 
 				# build image
 				docker build -t roberta:1.0-firstBuild .
@@ -26,6 +26,8 @@ pipeline {
 				docker push roberta:1.0-firstBuild
 
 				'''
+				
+				}
             }
         }
     }
