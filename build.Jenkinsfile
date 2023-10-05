@@ -20,13 +20,13 @@ pipeline {
 				docker build -t roberta:1.0-firstBuild .
 
 				# tag image
-				docker tag roberta:1.0-firstBuild firstRoberta
+				docker tag roberta:1.0-firstBuild first-roberta
 
 				#push image
 				docker push roberta:1.0-firstBuild
 
 				'''
-				
+
 				}
             }
         }
