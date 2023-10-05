@@ -10,7 +10,7 @@ pipeline {
 				// Retrieve DockerHub credentials by ID
                 withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
                 
-				//build image using docker
+				//build the roberta image
 				sh '''
 
                 # Use docker login with your credentials
