@@ -8,14 +8,6 @@ pipeline {
                 // sh 'echo building...'
 				sh '''
 
-				ls -l
-				# Load the JSON secrets file
-                secrets=$(cat secrets.json)
-
-                # Extract specific secrets using jq (if available)
-                dockerUsername=$(echo $secrets | jq -r '.docker.username')
-                dockerPassword=$(echo $secrets | jq -r '.docker.password')
-
                 # Use docker login with your credentials
                 docker login -u ${dockerUsername} -p ${dockerPassword}
 
