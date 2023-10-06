@@ -20,10 +20,10 @@ pipeline {
 				docker build -t roberta:1.0-firstBuild .
 
 				# tag image
-				#not needed done in above step already
+				docker tag roberta:1.0-firstBuild hammad653/roberta:1.0-firstBuild
 
 				#push image
-				docker push roberta:1.0-firstBuild
+				docker push ${DOCKERHUB_USERNAME}/roberta:1.0-firstBuild
 
 				'''
 
