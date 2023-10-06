@@ -23,7 +23,7 @@ pipeline {
 				docker tag roberta:1.0-firstBuild first-roberta
 
 				#push image
-				docker push ${DOCKERHUB_USERNAME}:1.0-firstBuild
+				docker push roberta:1.0-firstBuild
 
 				'''
 
