@@ -58,8 +58,12 @@ pipeline {
 
 		stage('Trigger Deploy') {
 				    steps {
-						        build job: 'my-roberta-cicd-deploy-pipeline', wait: false, parameters: [
-									            string(name: 'ROBERTA_IMAGE_URL', value: "${DOCKERHUB_USERNAME}/roberta:1.0-firstBuild")
+
+						// Retrieve DockerHub credentials by ID
+						withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+
+						build job: 'my-roberta-cicd-deploy-pipeline', wait: false, parameters: [
+										string(name: 'ROBERTA_IMAGE_URL', value: "${DOCKERHUB_USERNAME}/roberta:1.0-firstBuild")
 												]
 					}
 				}
