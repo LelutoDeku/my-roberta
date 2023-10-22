@@ -4,6 +4,9 @@ pipeline {
 		environment {
 			
 			REGISTRY_URL = '060885648262.dkr.ecr.us-east-1.amazonaws.com'
+			// Retrieve DockerHub credentials by ID
+			withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+
 
 		}
     stages {
@@ -13,9 +16,7 @@ pipeline {
 					// sh 'ls'
 					// sh 'echo building...'
 
-					// Retrieve DockerHub credentials by ID
-					withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
-					
+										
 					// build the roberta image
 					sh '''
 
