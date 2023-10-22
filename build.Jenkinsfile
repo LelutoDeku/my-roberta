@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+		environment {
+			
+			REGISTRY_URL = public.ecr.aws/p1s2n0m9
+
+		}
     stages {
         stage('Build') {
             steps {
@@ -30,16 +35,16 @@ pipeline {
 
 					//or we use aws-ecr service
 					sh '''
-					aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/p1s2n0m9
+					aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin REGISTRY_URL
 					
 					# build image
 					docker build -t cicd-my-roberta .
 					
 					# tag image
-					docker tag cicd-my-roberta:latest public.ecr.aws/p1s2n0m9/cicd-my-roberta:latest
+					docker tag cicd-my-roberta:latest REGISTRY_URL/cicd-my-roberta:v1.0
 					
 					#push image to ecr
-					docker push public.ecr.aws/p1s2n0m9/cicd-my-roberta:latest 
+					docker push REGISTRY_URL/cicd-my-roberta:v1.0
 
 					'''
 
