@@ -13,10 +13,10 @@ pipeline {
 					// sh 'ls'
 					// sh 'echo building...'
 
-					Retrieve DockerHub credentials by ID
+					// Retrieve DockerHub credentials by ID
 					withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
 					
-					build the roberta image
+					// build the roberta image
 					sh '''
 
 					# Use docker login with your credentials
