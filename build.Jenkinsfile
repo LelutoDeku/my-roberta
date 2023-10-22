@@ -3,7 +3,7 @@ pipeline {
 
 		environment {
 			
-			REGISTRY_URL = public.ecr.aws/p1s2n0m9
+			REGISTRY_URL = 'public.ecr.aws/p1s2n0m9'
 
 		}
     stages {
