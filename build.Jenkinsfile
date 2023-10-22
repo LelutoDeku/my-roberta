@@ -3,7 +3,7 @@ pipeline {
 
 		environment {
 			
-			REGISTRY_URL = 'public.ecr.aws/p1s2n0m9'
+			REGISTRY_URL = '060885648262.dkr.ecr.us-east-1.amazonaws.com'
 
 		}
     stages {
