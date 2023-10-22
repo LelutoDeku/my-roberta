@@ -35,16 +35,16 @@ pipeline {
 
 					//or we use aws-ecr service
 					sh '''
-					aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin REGISTRY_URL
+					aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REGISTRY_URL
 					
 					# build image
 					docker build -t cicd-my-roberta .
 					
 					# tag image
-					docker tag cicd-my-roberta:latest REGISTRY_URL/cicd-my-roberta:v1.0
+					docker tag cicd-my-roberta:latest $REGISTRY_URL/cicd-my-roberta:v1.0
 					
 					#push image to ecr
-					docker push REGISTRY_URL/cicd-my-roberta:v1.0
+					docker push $REGISTRY_URL/cicd-my-roberta:v1.0
 
 					'''
 
