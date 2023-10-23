@@ -7,7 +7,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 // complete this code to deploy to real k8s cluster
-                sh '# kubectl apply -f ....'
+                sh ''' 
+				echo change in YAML the value of docker image to: $ROBERTA_IMAGE_URL
+				'# kubectl apply -f ....'
+				
+				'''
             }
         }
     }
