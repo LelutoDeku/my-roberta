@@ -4,21 +4,18 @@ pipeline {
 		environment {
 			
 			REGISTRY_URL = '060885648262.dkr.ecr.us-east-1.amazonaws.com'
-			
 
 		}
     stages {
-		
-		// Retrieve DockerHub credentials by ID
-		withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
-
         stage('Build') {
             steps {
 
 					// sh 'ls'
 					// sh 'echo building...'
 
-										
+					// Retrieve DockerHub credentials by ID
+					withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+					
 					// build the roberta image
 					sh '''
 
@@ -56,19 +53,16 @@ pipeline {
 		
         }
 
-		// Retrieve DockerHub credentials by ID
-						withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
-
 		stage('Trigger Deploy') {
 				    steps {
 
-						
-						build job: 'my-roberta-cicd-deploy-pipeline', wait: false, parameters: [
-										string(name: 'ROBERTA_IMAGE_URL', value: "${DOCKERHUB_USERNAME}/roberta:1.0-firstBuild")
+						// Retrieve DockerHub credentials by ID
+					withCredentials([usernamePassword(credentialsId: 'Dockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {                    
+						        build job: 'my-roberta-cicd-deploy-pipeline', wait: false, parameters: [
+									            string(name: 'ROBERTA_IMAGE_URL', value: "${DOCKERHUB_USERNAME}/roberta:1.0-firstBuild")
 												]
-						}
 					}
-						}
-    	}
-	}
-	
+				}
+			}
+    }
+}
