@@ -52,8 +52,11 @@ pipeline {
 
 			post	{
 				always	{
-					sh ''' 
-						docker image prune -f -a --filter "until=240h" #delete images that are moere than 10 days old
+					sh '''
+
+					#delete images that are moere than 10 days old
+					#docker image prune -f -a --filter "until=240h" 
+					
 					'''
 				}
 			}
